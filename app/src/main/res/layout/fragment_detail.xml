@@ -13,70 +13,106 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/detail_image"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/cast_away" />
+                app:srcCompat="@drawable/cast_away" />
 
             <TextView
-                android:id="@+id/detail_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/detail_image"
-                app:layout_constraintTop_toBottomOf="@+id/detail_image"
-                tools:text="Kommt tatsächlich eine Fortsetzung?!" />
-
-            <TextView
-                android:id="@+id/detail_datum"
+                android:id="@+id/detail_title_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@+id/detail_title"
-                app:layout_constraintTop_toBottomOf="@+id/detail_title"
-                tools:text="01.08.2022" />
-
-            <View
-                android:id="@+id/detail_line"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@color/light_red"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="24dp"
+                android:textColor="#000000"
+                android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detail_datum" />
+                app:layout_constraintTop_toBottomOf="@+id/detail_image"
+                tools:text="Titelüberschrift" />
 
             <TextView
-                android:id="@+id/detail_text"
+                android:id="@+id/detail_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/detail_title_text"
+                app:layout_constraintTop_toBottomOf="@+id/detail_title_text"
+                tools:text="30.01.2022" />
+
+            <TextView
+                android:id="@+id/detail_article_text"
                 android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:text="TextView"
+                android:textColor="#0E0E0E"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_date_text"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                android:id="@+id/detail_comment_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Kommentare"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/detail_article_text"
+                app:layout_constraintTop_toBottomOf="@+id/detail_article_text" />
+
+            <Button
+                android:id="@+id/detail_comment_send_button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#03A9F4"
+                android:text="absenden"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/detail_comment_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#9C1414"
+                android:ems="10"
+                android:hint="Dein Kommentar"
+                android:inputType="textPersonName"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/detail_comment_send_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/detail_comment_send_button"
+                app:layout_constraintTop_toBottomOf="@+id/detail_comment_title_text" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detail_comment_recycler"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="24dp"
-                android:justificationMode="inter_word"
-                android:text="@string/dummy"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@+id/detail_comment_edit"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detail_line" />
+                app:layout_constraintTop_toBottomOf="@+id/detail_comment_title_text"
+                tools:itemCount="3"
+                tools:listitem="@layout/comment_item" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </ScrollView>
-
-
 </layout>
